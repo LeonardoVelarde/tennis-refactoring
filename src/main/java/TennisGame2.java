@@ -35,25 +35,12 @@ public class TennisGame2 implements TennisGame
         else if(advantageScore.works()) {
             score = advantageScore.getScore();
         }
-        else {
-            score = getWonScore(score);
+        else if(wonScore.works()){
+            score = wonScore.getScore();
         }
 
         return score;
     }
-
-    private String getWonScore(String score){
-        if (P1point>=4 && P2point>=0 && (P1point-P2point)>=2)
-        {
-            score = "Win for " + player1Name;
-        }
-        if (P2point>=4 && P1point>=0 && (P2point-P1point)>=2)
-        {
-            score = "Win for " + player2Name;
-        }
-        return score;
-    }
-
 
     public void SetP1Score(int number){
         
