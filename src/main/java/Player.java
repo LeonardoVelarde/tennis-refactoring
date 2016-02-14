@@ -23,16 +23,12 @@ public class Player {
         return score == opponent.getScore();
     }
 
-    public boolean isWinningOverZeroTo(Player opponent){
-        return score > 0 && opponent.getScore() == 0;
-    }
-
-    public boolean hasRegularScoreWith(Player opponent){
-        return score > opponent.getScore() && score < 4;
-    }
-
     public boolean hasAdvantageOver(Player opponent){
-        return score > opponent.getScore() && opponent.getScore() >= 3;
+        return score >= 4 && score - opponent.getScore() == 1;
+    }
+
+    public boolean hasWonOver(Player opponent){
+        return score>=4 && opponent.getScore()>=0 && (score-opponent.getScore())>=2;
     }
 
     public void addScore(){

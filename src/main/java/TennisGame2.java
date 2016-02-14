@@ -24,6 +24,7 @@ public class TennisGame2 implements TennisGame
         TiedScore tieScore = new TiedScore(player1, player2);
         RegularScore regularScore = new RegularScore(player1, player2);
         AdvantageScore advantageScore = new AdvantageScore(player1, player2);
+        WonScore wonScore = new WonScore(player1, player2);
 
         if(tieScore.works()){
             score = tieScore.getScore();
@@ -34,8 +35,10 @@ public class TennisGame2 implements TennisGame
         else if(advantageScore.works()) {
             score = advantageScore.getScore();
         }
+        else {
+            score = getWonScore(score);
+        }
 
-        score = getWonScore(score);
         return score;
     }
 
