@@ -31,6 +31,10 @@ public class Player {
         return score > opponent.getScore() && score < 4;
     }
 
+    public boolean hasAdvantageOver(Player opponent){
+        return score > opponent.getScore() && opponent.getScore() >= 3;
+    }
+
     public void addScore(){
         score++;
     }

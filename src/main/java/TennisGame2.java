@@ -30,9 +30,10 @@ public class TennisGame2 implements TennisGame
         else if(player1.hasRegularScoreWith(player2) || player2.hasRegularScoreWith(player1)){
             score = getRegularScore(score);
         }
+        else if(player1.hasAdvantageOver(player2) || player2.hasAdvantageOver(player1)) {
+            score = getAdvantageResult(score);
+        }
 
-
-        score = getAdvantageResult(score);
         score = getWonScore(score);
         return score;
     }
@@ -65,42 +66,42 @@ public class TennisGame2 implements TennisGame
     private String getTiedResult(String score) {
         if (P1point == P2point && P1point < 4)
         {
-            if (P1point==0)
+            if (P1point == 0)
                 score = "Love";
-            if (P1point==1)
+            if (P1point == 1)
                 score = "Fifteen";
-            if (P1point==2)
+            if (P1point == 2)
                 score = "Thirty";
             score += "-All";
         }
-        if (P1point==P2point && P1point>=3)
+        if (P1point == P2point && P1point >= 3)
             score = "Deuce";
         return score;
     }
 
     private String getRegularScore(String score){
-        if (P1point>P2point && P1point < 4)
+        if (P1point > P2point && P1point < 4)
         {
-            if (P1point==2)
-                P1res="Thirty";
-            if (P1point==3)
-                P1res="Forty";
-            if (P2point==1)
-                P2res="Fifteen";
-            if (P2point==2)
-                P2res="Thirty";
+            if (P1point == 2)
+                P1res = "Thirty";
+            if (P1point == 3)
+                P1res = "Forty";
+            if (P2point == 1)
+                P2res = "Fifteen";
+            if (P2point == 2)
+                P2res = "Thirty";
             score = P1res + "-" + P2res;
         }
         // SECOND PART
-        if (P2point>P1point && P2point < 4)
+        if (P2point > P1point && P2point < 4)
         {
-            if (P2point==2)
-                P2res="Thirty";
-            if (P2point==3)
-                P2res="Forty";
-            if (P1point==1)
-                P1res="Fifteen";
-            if (P1point==2)
+            if (P2point == 2)
+                P2res = "Thirty";
+            if (P2point == 3)
+                P2res = "Forty";
+            if (P1point == 1)
+                P1res = "Fifteen";
+            if (P1point == 2)
                 P1res="Thirty";
             score = P1res + "-" + P2res;
         }
