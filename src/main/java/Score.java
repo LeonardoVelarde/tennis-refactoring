@@ -9,4 +9,19 @@ public class Score {
         this.player1 = player1;
         this.player2 = player2;
     }
+
+    public String getResult(int score) {
+        if(score == 0){
+            return "Love";
+        }
+        else if(score == 1){
+            return "Fifteen";
+        }
+        else if(score == 2){
+            return "Thirty";
+        }
+        else{
+            return "Forty";
+        }
+    }
 }

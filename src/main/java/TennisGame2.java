@@ -22,11 +22,12 @@ public class TennisGame2 implements TennisGame
     public String getScore(){
         String score = "";
         TiedScore tie = new TiedScore(player1, player2);
+        WinningOverZeroScore winningOverZeroScore = new WinningOverZeroScore(player1, player2);
         if(tie.works()){
             score = tie.getScore();
         }
-        else if(player1.isWinningOverZeroTo(player2) || player2.isWinningOverZeroTo(player1)){
-            score = getWinningOverZeroResult(score);
+        else if(winningOverZeroScore.works()){
+            score = winningOverZeroScore.getScore();
         }
         else if(player1.hasRegularScoreWith(player2) || player2.hasRegularScoreWith(player1)){
             score = getRegularScore(score);

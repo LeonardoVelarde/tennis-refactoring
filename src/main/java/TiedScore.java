@@ -14,15 +14,4 @@ public class TiedScore extends Score{
         return player1.getScore() > 2 ? "Deuce" : getResult(player1.getScore()) + "-All";
     }
 
-    private String getResult(Integer score) {
-        if(score == 0){
-            return "Love";
-        }
-        else if(score == 1){
-            return "Fifteen";
-        }
-        else{
-            return "Thirty";
-        }
-    }
 }
