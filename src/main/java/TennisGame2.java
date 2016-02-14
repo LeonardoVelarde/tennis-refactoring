@@ -19,18 +19,12 @@ public class TennisGame2 implements TennisGame
         score = getTiedResult(score);
         score = getWinningOverZeroResult(score);
         score = getWinningResult(score);
+        score = getAdvantageResult(score);
+        score = getWonScore(score);
+        return score;
+    }
 
-        
-        if (P1point > P2point && P2point >= 3)
-        {
-            score = "Advantage player1";
-        }
-        
-        if (P2point > P1point && P1point >= 3)
-        {
-            score = "Advantage player2";
-        }
-        
+    private String getWonScore(String score){
         if (P1point>=4 && P2point>=0 && (P1point-P2point)>=2)
         {
             score = "Win for player1";
@@ -38,6 +32,19 @@ public class TennisGame2 implements TennisGame
         if (P2point>=4 && P1point>=0 && (P2point-P1point)>=2)
         {
             score = "Win for player2";
+        }
+        return score;
+    }
+
+    private String getAdvantageResult(String score){
+        if (P1point > P2point && P2point >= 3)
+        {
+            score = "Advantage player1";
+        }
+
+        if (P2point > P1point && P1point >= 3)
+        {
+            score = "Advantage player2";
         }
         return score;
     }
