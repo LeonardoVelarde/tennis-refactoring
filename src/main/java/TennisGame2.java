@@ -21,16 +21,18 @@ public class TennisGame2 implements TennisGame
 
     public String getScore(){
         String score = "";
-        TiedScore tie = new TiedScore(player1, player2);
+        TiedScore tieScore = new TiedScore(player1, player2);
         RegularScore regularScore = new RegularScore(player1, player2);
-        if(tie.works()){
-            score = tie.getScore();
+        AdvantageScore advantageScore = new AdvantageScore(player1, player2);
+
+        if(tieScore.works()){
+            score = tieScore.getScore();
         }
         else if(regularScore.works()){
             score = regularScore.getScore();
         }
-        else if(player1.hasAdvantageOver(player2) || player2.hasAdvantageOver(player1)) {
-            score = getAdvantageResult(score);
+        else if(advantageScore.works()) {
+            score = advantageScore.getScore();
         }
 
         score = getWonScore(score);
