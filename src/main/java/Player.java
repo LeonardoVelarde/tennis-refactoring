@@ -19,8 +19,12 @@ public class Player {
         return name;
     }
 
-    public boolean hasTieWith(Player oponent){
-        return score == oponent.getScore();
+    public boolean hasTieWith(Player opponent){
+        return score == opponent.getScore();
+    }
+
+    public boolean isWinningOverZeroTo(Player opponent){
+        return score > 0 && opponent.getScore() == 0;
     }
 
     public void addScore(){

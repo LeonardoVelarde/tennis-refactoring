@@ -24,7 +24,10 @@ public class TennisGame2 implements TennisGame
         if(player1.hasTieWith(player2)){
             score = getTiedResult(score);
         }
-        score = getWinningOverZeroResult(score);
+        else if (player1.isWinningOverZeroTo(player2) || player2.isWinningOverZeroTo(player1)){
+            score = getWinningOverZeroResult(score);
+        }
+
         score = getWinningResult(score);
         score = getAdvantageResult(score);
         score = getWonScore(score);
@@ -85,6 +88,7 @@ public class TennisGame2 implements TennisGame
                 P2res="Thirty";
             score = P1res + "-" + P2res;
         }
+        // SECOND PART
         if (P2point>P1point && P2point < 4)
         {
             if (P2point==2)
@@ -113,6 +117,7 @@ public class TennisGame2 implements TennisGame
             P2res = "Love";
             score = P1res + "-" + P2res;
         }
+        // SECOND PART
         if (P2point > 0 && P1point==0)
         {
             if (P2point==1)
