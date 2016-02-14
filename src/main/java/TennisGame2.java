@@ -21,8 +21,9 @@ public class TennisGame2 implements TennisGame
 
     public String getScore(){
         String score = "";
-        if(player1.hasTieWith(player2)){
-            score = getTiedResult(score);
+        TiedScore tie = new TiedScore(player1, player2);
+        if(tie.works()){
+            score = tie.getScore();
         }
         else if(player1.isWinningOverZeroTo(player2) || player2.isWinningOverZeroTo(player1)){
             score = getWinningOverZeroResult(score);
@@ -60,22 +61,6 @@ public class TennisGame2 implements TennisGame
         {
             score = "Advantage " + player2Name;
         }
-        return score;
-    }
-
-    private String getTiedResult(String score) {
-        if (P1point == P2point && P1point < 4)
-        {
-            if (P1point == 0)
-                score = "Love";
-            if (P1point == 1)
-                score = "Fifteen";
-            if (P1point == 2)
-                score = "Thirty";
-            score += "-All";
-        }
-        if (P1point == P2point && P1point >= 3)
-            score = "Deuce";
         return score;
     }
 
