@@ -27,6 +27,10 @@ public class Player {
         return score > 0 && opponent.getScore() == 0;
     }
 
+    public boolean hasRegularScoreWith(Player opponent){
+        return score > opponent.getScore() && score < 4;
+    }
+
     public void addScore(){
         score++;
     }
