@@ -22,15 +22,12 @@ public class TennisGame2 implements TennisGame
     public String getScore(){
         String score = "";
         TiedScore tie = new TiedScore(player1, player2);
-        WinningOverZeroScore winningOverZeroScore = new WinningOverZeroScore(player1, player2);
+        RegularScore regularScore = new RegularScore(player1, player2);
         if(tie.works()){
             score = tie.getScore();
         }
-        else if(winningOverZeroScore.works()){
-            score = winningOverZeroScore.getScore();
-        }
-        else if(player1.hasRegularScoreWith(player2) || player2.hasRegularScoreWith(player1)){
-            score = getRegularScore(score);
+        else if(regularScore.works()){
+            score = regularScore.getScore();
         }
         else if(player1.hasAdvantageOver(player2) || player2.hasAdvantageOver(player1)) {
             score = getAdvantageResult(score);
@@ -89,6 +86,35 @@ public class TennisGame2 implements TennisGame
                 P1res = "Fifteen";
             if (P1point == 2)
                 P1res="Thirty";
+            score = P1res + "-" + P2res;
+        }
+        return score;
+    }
+
+    private String getWinningOverZeroResult(String score){
+        if (P1point > 0 && P2point==0)
+        {
+            if (P1point==1)
+                P1res = "Fifteen";
+            if (P1point==2)
+                P1res = "Thirty";
+            if (P1point==3)
+                P1res = "Forty";
+
+            P2res = "Love";
+            score = P1res + "-" + P2res;
+        }
+        // SECOND PART
+        if (P2point > 0 && P1point==0)
+        {
+            if (P2point==1)
+                P2res = "Fifteen";
+            if (P2point==2)
+                P2res = "Thirty";
+            if (P2point==3)
+                P2res = "Forty";
+
+            P1res = "Love";
             score = P1res + "-" + P2res;
         }
         return score;
