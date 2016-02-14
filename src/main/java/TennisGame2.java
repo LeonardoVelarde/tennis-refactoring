@@ -32,7 +32,7 @@ public class TennisGame2 implements TennisGame
             score = regularScore.getScore();
         }
         else if(advantageScore.works()) {
-            score = advantageScore.
+            score = advantageScore.getScore();
         }
 
         score = getWonScore(score);
@@ -50,7 +50,7 @@ public class TennisGame2 implements TennisGame
         }
         return score;
     }
-    
+
 
     public void SetP1Score(int number){
         
