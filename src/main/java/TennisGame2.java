@@ -9,14 +9,21 @@ public class TennisGame2 implements TennisGame
     private String player1Name;
     private String player2Name;
 
+    private Player player1;
+    private Player player2;
+
     public TennisGame2(String player1Name, String player2Name) {
         this.player1Name = player1Name;
         this.player2Name = player2Name;
+        this.player1 = new Player(player1Name);
+        this.player2 = new Player(player2Name);
     }
 
     public String getScore(){
         String score = "";
-        score = getTiedResult(score);
+        if(player1.hasTieWith(player2)){
+            score = getTiedResult(score);
+        }
         score = getWinningOverZeroResult(score);
         score = getWinningResult(score);
         score = getAdvantageResult(score);
@@ -27,11 +34,11 @@ public class TennisGame2 implements TennisGame
     private String getWonScore(String score){
         if (P1point>=4 && P2point>=0 && (P1point-P2point)>=2)
         {
-            score = "Win for player1";
+            score = "Win for " + player1Name;
         }
         if (P2point>=4 && P1point>=0 && (P2point-P1point)>=2)
         {
-            score = "Win for player2";
+            score = "Win for " + player2Name;
         }
         return score;
     }
@@ -39,12 +46,12 @@ public class TennisGame2 implements TennisGame
     private String getAdvantageResult(String score){
         if (P1point > P2point && P2point >= 3)
         {
-            score = "Advantage player1";
+            score = "Advantage " + player1Name;
         }
 
         if (P2point > P1point && P1point >= 3)
         {
-            score = "Advantage player2";
+            score = "Advantage " + player2Name;
         }
         return score;
     }
@@ -140,15 +147,17 @@ public class TennisGame2 implements TennisGame
     }
     
     public void P1Score(){
+        player1.addScore();
         P1point++;
     }
     
     public void P2Score(){
+        player2.addScore();
         P2point++;
     }
 
     public void wonPoint(String player) {
-        if (player == "player1")
+        if (player == player1.getName())
             P1Score();
         else
             P2Score();
