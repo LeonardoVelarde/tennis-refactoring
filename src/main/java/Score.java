@@ -1,7 +1,7 @@
 /*
  * Created by levelarde on 14-02-16.
  */
-public class Score {
+public abstract class Score {
     protected Player player1;
     protected Player player2;
 
@@ -10,7 +10,9 @@ public class Score {
         this.player2 = player2;
     }
 
-    public String getResult(int score) {
+    public abstract String getScore();
+
+    protected String getResult(int score) {
         if(score == 0){
             return "Love";
         }

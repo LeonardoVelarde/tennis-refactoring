@@ -3,6 +3,7 @@ public class TennisGame2 implements TennisGame
 {
     private Player player1;
     private Player player2;
+    private Score scoreState;
 
     public TennisGame2(String player1Name, String player2Name) {
         this.player1 = new Player(player1Name);
@@ -17,19 +18,19 @@ public class TennisGame2 implements TennisGame
         WonScore wonScore = new WonScore(player1, player2);
 
         if(tieScore.works()){
-            score = tieScore.getScore();
+            this.scoreState = new TiedScore(player1, player2);
         }
         else if(regularScore.works()){
-            score = regularScore.getScore();
+            this.scoreState = new RegularScore(player1, player2);
         }
         else if(advantageScore.works()) {
-            score = advantageScore.getScore();
+            this.scoreState = new AdvantageScore(player1, player2);
         }
         else if(wonScore.works()){
-            score = wonScore.getScore();
+            this.scoreState = new WonScore(player1, player2);
         }
 
-        return score;
+        return this.scoreState.getScore();
     }
 
     public void SetP1Score(int number){
